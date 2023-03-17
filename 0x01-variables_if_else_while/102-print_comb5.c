@@ -16,6 +16,8 @@ int main(void)
 			putchar(' ');
 			putchar('0' + secondNum / 10);
 			putchar('0' + secondNum % 10);
+			if (firstNum == 98 && secondNum == 99)
+				break;
 			putchar(',');
 			putchar(' ');
 		}
