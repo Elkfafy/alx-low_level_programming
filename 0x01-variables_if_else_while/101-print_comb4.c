@@ -15,6 +15,8 @@ int main(void)
 				putchar('0' + firstNum);
 				putchar('0' + secondNum);
 				putchar('0' + thirdNum);
+				if (firstNum == 7 && secondNum == 8 && thirdNum == 9)
+					break;
 				putchar(',');
 				putchar(' ');
 			}
