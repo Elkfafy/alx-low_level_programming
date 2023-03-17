@@ -13,6 +13,8 @@ int main(void)
 		{
 			putchar('0' + firstNum);
 			putchar('0' + secondNum);
+			if (firstNum == 8 && secondNum == 9)
+				break;
 			putchar(',');
 			putchar(' ');
 		}
