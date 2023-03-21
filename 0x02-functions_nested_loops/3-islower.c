@@ -1,6 +1,7 @@
 #include "main.h"
 /**
  * _islower - check if lower
+ * @c: input
  *
  * Return: 0
  */
