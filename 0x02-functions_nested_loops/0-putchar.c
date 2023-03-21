@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "main.h"
 /**
  * main - putchar
  *
@@ -6,6 +6,14 @@
  */
 int main(void)
 {
-	puts("_putchar");
+	char* myStr;
+
+	myStr = "_putchar";
+	while (*myStr != '\0')
+	{
+		_putchar(*myStr);
+		myStr++;
+	}
+	_putchar('\n');
 	return (0);
 }
