@@ -1,9 +1,9 @@
 #include "main.h"
 /**
- * print_rev - rev of string
+ * rev_string - rev of string
  * @s: input string
  */
-void print_rev(char *s)
+void rev_string(char *s)
 {
 	char temp;
 	int start, end;
@@ -25,10 +25,4 @@ void print_rev(char *s)
 		start++;
 		end--;
 	}
-	while (*s != '\0')
-	{
-		_putchar(*s);
-		s++;
-	}
-	_putchar('\n');
 }
