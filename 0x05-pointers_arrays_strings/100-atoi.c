@@ -1,4 +1,5 @@
 #include "main.h"
+#include <limits.h>
 /**
  * _atoi - turn string to int
  * @s: input string
@@ -27,6 +28,12 @@ int _atoi(char *s)
 			*s == '9')
 		{
 			sum *= 10;
+			if (sign == -1 && sum + INT_MIN == -((int)*s - (int)'0'))
+			{
+				sum = -sum;
+				sum -= ((int)*s - (int)'0');
+				return (sum);
+			}
 			sum += (int)*s - (int)'0';
 			flag = 1;
 		}
