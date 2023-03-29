@@ -26,30 +26,21 @@ int contain(char *str, char c)
  */
 char *cap_string(char *str)
 {
-	int i;
-
-	i = 0;
-	if (str[i] >= 'a' && str[i] <= 'z')
+	int i, flag;
+	
+	flag = 1;
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		str[i] -= 'a' - 'A';
-		i++;
-	}
-	for (; str[i] != '\0'; i++)
-	{
-		if (contain("\t\n, ;.!?\"(){}", str[i]))
+		if (contain(" \t\n\",;.!?(){}", str[i])
+			flag = 1;
+		else
 		{
-			if (str[i + 1] >= 'a' && str[i + 1] <= 'z')
-			{
-				str[i + 1] -= 'a' - 'A';
-				i++;
-			}
-			else if (str[i + 1] >= 'A' && str[i + 1] <= 'Z')
-			{
-				i++;
-			}
+			if (flag == 1 && str[i] >= 'a' && str[i] <= 'z')
+				str[i] -= 'a' - 'A';
+			else if (flag == 0 && str[i] >= 'A' && str[i] <= 'Z')
+				str[i] += 'a' - 'A';
+			flag = 0;
 		}
-		else if (str[i] >= 'A' && str[i] <= 'Z' && i)
-			str[i] += 'a' - 'A';
 	}
 	return (str);
 }
