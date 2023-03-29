@@ -31,7 +31,7 @@ char *cap_string(char *str)
 	flag = 1;
 	for (i = 0; str[i] != '\0'; i++)
 	{
-		if (contain(" \t\n\",;.!?(){}", str[i])
+		if (contain(" \t\n\",;.!?(){}", str[i]))
 			flag = 1;
 		else
 		{
