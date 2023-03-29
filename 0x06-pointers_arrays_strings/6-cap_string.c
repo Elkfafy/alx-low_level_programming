@@ -37,8 +37,6 @@ char *cap_string(char *str)
 		{
 			if (flag == 1 && str[i] >= 'a' && str[i] <= 'z')
 				str[i] -= 'a' - 'A';
-			else if (flag == 0 && str[i] >= 'A' && str[i] <= 'Z')
-				str[i] += 'a' - 'A';
 			flag = 0;
 		}
 	}
