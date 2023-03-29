@@ -27,7 +27,7 @@ int contain(char *str, char c)
 char *cap_string(char *str)
 {
 	int i, flag;
-	
+
 	flag = 1;
 	for (i = 0; str[i] != '\0'; i++)
 	{
