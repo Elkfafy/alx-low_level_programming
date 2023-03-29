@@ -30,11 +30,13 @@ char *cap_string(char *str)
 
 	for (i = 0; str[i] != '\0'; i++)
 	{
-		if (contain("\t\n, ;.!?\"(){}", str[i]) &&
-			str[i + 1] >= 'a' &&
-			str[i + 1] <= 'z')
+		if (contain("\t\n, ;.!?\"(){}", str[i]))
 		{
-			str[i + 1] -= 'a' - 'A';
+			if (str[i + 1] >= 'a' &&
+			str[i + 1] <= 'z')
+			{
+				str[i + 1] -= 'a' - 'A';
+			}
 			i++;
 		}
 		else if (str[i] >= 'A' && str[i] <= 'Z' && i)
