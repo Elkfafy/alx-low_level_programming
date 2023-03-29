@@ -20,7 +20,7 @@ void print_number(int n)
 	}
 	while (n / init == 0)
 		init /= 10;
-	while (n != 0)
+	while (init != 0)
 	{
 		_putchar((n / init) + '0');
 		n %= init;
