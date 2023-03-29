@@ -28,7 +28,7 @@ char *cap_string(char *str)
 {
 	int i;
 
-	for (i = 1; str[i] != '\0'; i++)
+	for (i = 0; str[i] != '\0'; i++)
 	{
 		if (contain("\t\n, ;.!?\"(){}", str[i]) &&
 			str[i + 1] >= 'a' &&
@@ -37,7 +37,7 @@ char *cap_string(char *str)
 			str[i + 1] -= 'a' - 'A';
 			i++;
 		}
-		else if (str[i] >= 'A' && str[i] <= 'Z')
+		else if (str[i] >= 'A' && str[i] <= 'Z' && i)
 			str[i] += 'a' - 'A';
 	}
 	return (str);
