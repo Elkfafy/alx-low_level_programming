@@ -4,13 +4,12 @@
  * compare - compare string with substring
  * @str: input string
  * @sub: input substring
- *
  * Return: 1 for true, 0 for false
  */
-int compare(char *str, char*sub)
+int compare(char *str, char *sub)
 {
 	int i, strSize, subSize;
-	
+
 	for (strSize = 0; str[strSize] != '\0'; strSize++)
 		;
 	for (subSize = 0; sub[subSize] != '\0'; subSize++)
