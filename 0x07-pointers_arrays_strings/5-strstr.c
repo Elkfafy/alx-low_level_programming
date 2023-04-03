@@ -10,8 +10,6 @@ int compare(char *str, char *sub)
 {
 	int i, strSize, subSize;
 
-	if (*sub == '\0')
-		return (0);
 	for (strSize = 0; str[strSize] != '\0'; strSize++)
 		;
 	for (subSize = 0; sub[subSize] != '\0'; subSize++)
@@ -36,6 +34,8 @@ char *_strstr(char *haystack, char *needle)
 {
 	int i, hSize, nSize;
 
+	if (*needle == '\0' || *haystack == '\0')
+		return (NULL);
 	for (hSize = 0; haystack[hSize] != '\0'; hSize++)
 		;
 	for (nSize = 0; needle[nSize] != '\0'; nSize++)
