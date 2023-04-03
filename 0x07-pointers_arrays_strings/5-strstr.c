@@ -10,6 +10,8 @@ int compare(char *str, char *sub)
 {
 	int i, strSize, subSize;
 
+	if (*sub == '\0')
+		return (0);
 	for (strSize = 0; str[strSize] != '\0'; strSize++)
 		;
 	for (subSize = 0; sub[subSize] != '\0'; subSize++)
