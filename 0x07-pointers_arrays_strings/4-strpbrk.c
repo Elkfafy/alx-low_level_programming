@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stddef.h>
 /**
  * isAccepted - is char in string
  * @str: input string
@@ -17,17 +18,20 @@ int isAccepted(char *str, char c)
 	return (0);
 }
 /**
- * _strspn - get length of prefix substring
+ * _strpbrk - get pointer of first accepted char
  * @s: input string
  * @accept: accepted characters
  *
- * Return: positive number
+ * Return:  pointer for first accepted char
  */
-unsigned int _strspn(char *s, char *accept)
+char *_strpbrk(char *s, char *accept)
 {
-	unsigned int i;
+	unsigned int i, size;
 
-	for (i = 0; isAccepted(accept, s[i]); i++)
+	for (size = 0; s[size] != '\0'; size++)
 		;
-	return (i);
+	for (i = 0; i <= size; i++)
+		if (isAccepted(accept, s[i]))
+			return (&s[i]);
+	return (NULL);
 }
