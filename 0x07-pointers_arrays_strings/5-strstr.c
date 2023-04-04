@@ -34,7 +34,9 @@ char *_strstr(char *haystack, char *needle)
 {
 	int i, hSize, nSize;
 
-	if (*needle == '\0' || *haystack == '\0')
+	if (*needle == '\0')
+		return (haystack);
+	if (*haystack == '\0')
 		return (NULL);
 	for (hSize = 0; haystack[hSize] != '\0'; hSize++)
 		;
