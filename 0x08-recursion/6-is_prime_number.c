@@ -27,4 +27,4 @@ int helper(int n, int i)
 int is_prime_number(int n)
 {
 	return (helper(n, 2));
-}	
+}
