@@ -17,9 +17,9 @@ int main(int args, char *argv[])
 		return (0);
 	}
 	sum = 0;
-	for (i = 0; i < args; i++)
+	for (i = 1; i < args; i++)
 	{
-		if (argv[i] == '0')
+		if (*argv[i] == '0')
 		{
 			continue;
 		}
@@ -31,5 +31,6 @@ int main(int args, char *argv[])
 		}
 		sum += temp;
 	}
+	printf("%d\n", sum);
 	return (0);
 }
