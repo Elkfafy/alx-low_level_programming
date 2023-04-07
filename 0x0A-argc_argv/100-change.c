@@ -9,14 +9,14 @@
  */
 int main(int args, char *argv[])
 {
-	int i, count, num;
+	int i, num;
+
 	if (args != 2)
 	{
 		printf("Error\n");
 		return (1);
 	}
 	num = atoi(argv[1]);
-	count = 0;
 	if (num <= 0)
 	{
 		printf("0\n");
@@ -25,31 +25,16 @@ int main(int args, char *argv[])
 	for (i = 0; num > 0; i++)
 	{
 		if (num - 25 >= 0)
-		{
 			num = num - 25;
-			count++;
-		}
 		else if (num - 10 >= 0)
-		{
 			num = num - 10;
-			count++;
-		}
 		else if (num - 5 >= 0)
-		{
 			num = num - 5;
-			count++;
-		}
 		else if (num - 2 >= 0)
-		{
 			num = num - 2;
-			count++;
-		}
 		else if (num - 1 >= 0)
-		{
 			num = num - 1;
-			count++;
-		}
 	}
-	printf("%d\n", count);
+	printf("%d\n", i);
 	return (0);
 }
