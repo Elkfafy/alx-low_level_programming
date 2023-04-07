@@ -19,7 +19,7 @@ int main(int args, char *argv[])
 	sum = 0;
 	for (i = 1; i < args; i++)
 	{
-		if (*argv[i] == '0')
+		if (!argv[i][1] && *argv[i] == '0')
 		{
 			continue;
 		}
