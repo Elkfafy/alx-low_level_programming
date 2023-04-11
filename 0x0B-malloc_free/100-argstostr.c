@@ -20,6 +20,7 @@ char *argstostr(int ac, char **av)
 		{
 			sumSize += 1;
 		}
+		sumSize += 1;
 	}
 	str = (char *)malloc(sumSize * sizeof(char));
 	if (!sumSize)
