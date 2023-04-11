@@ -16,7 +16,7 @@ char *_strdup(char *str)
 		return (NULL);
 	for (size = 0; str[size] != '\0'; size++)
 		;
-	cpStr = (char *)malloc(sizeof(char) * size);
+	cpStr = (char *)malloc(sizeof(char) * (1 + size));
 	if (!cpStr)
 		return (NULL);
 	for (i = 0; i < size; i++)
