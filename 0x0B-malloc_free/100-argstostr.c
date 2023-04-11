@@ -13,6 +13,8 @@ char *argstostr(int ac, char **av)
 	char *str;
 	int sumSize, i, j;
 
+	if (ac <= 0)
+		return (NULL);
 	sumSize = 1;
 	for (i = 0; i < ac; i++)
 	{
