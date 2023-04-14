@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 /**
- * _calloc : calloc function
+ * _calloc - calloc function
  * @nmemb: input number of members
  * @size: size of each member
  *
