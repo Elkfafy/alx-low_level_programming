@@ -3,6 +3,8 @@
 /**
  * malloc_checked - malloc to b bytes
  * @b: input bytes
+ *
+ * Return: memory location
  */
 void *malloc_checked(unsigned int b)
 {
