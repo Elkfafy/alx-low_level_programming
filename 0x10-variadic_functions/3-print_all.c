@@ -7,7 +7,7 @@
  */
 void print_all(const char * const format, ...)
 {
-	a_list valist;
+	va_list valist;
 	int n = 0, i = 0;
 	char *sep = ", ";
 	char *str;
