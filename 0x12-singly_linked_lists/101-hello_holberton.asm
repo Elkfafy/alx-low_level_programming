@@ -1,11 +1,10 @@
-extern _printf
-
-global _main
+extern printf
+global main
 
 section .text
-_main :
+main :
 	push msg
-	call _printf
+	call printf
 	ret
 
 section .data
