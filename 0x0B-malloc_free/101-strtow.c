@@ -45,8 +45,7 @@ char **strtow(char *str)
 	{
 		if (str[i] != ' ')
 		{
-			for (j = i; str[j] != ' '; j++)
-				;
+			for (j = i; str[j] != ' ' && str[j] != '\0'; j++) ;
 			result[current] = malloc((j - i + 1) * sizeof(char));
 			if (result[current] == NULL)
 			{
@@ -60,6 +59,7 @@ char **strtow(char *str)
 				result[current][i - start] = str[i];
 			result[current][i - start] = '\0';
 			current++;
+			i--;
 		}
 	}
 	result[current] = NULL;
