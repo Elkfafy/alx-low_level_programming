@@ -8,7 +8,8 @@
  */
 char *argstostr(int ac, char **av)
 {
-	int i, j, str_size, current = 0;
+	int i, j;
+	unsigned int str_size, current = 0;
 	char *result;
 
 	if (ac == 0 || av == NULL)
@@ -27,10 +28,10 @@ char *argstostr(int ac, char **av)
 		for (j = 0; av[i][j] != '\0'; j++)
 		{
 			result[current] = av[i][j];
-			current++;
+			++current;
 		}
 		result[current] = '\n';
-		current++;
+		++current;
 	}
 	result[current] = '\0';
 	return (result);
