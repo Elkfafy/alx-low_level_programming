@@ -1,5 +1,28 @@
 #include "main.h"
 /**
+ * count_word - count words
+ * @str: input string
+ *
+ * Return: return words count
+ */
+int count_word(char *str)
+{
+	int i, word_count = 0, isBlank = 0;
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (str[i] != ' ')
+		{
+			if (isBlank)
+				word_count++;
+			isBlank = 0;
+			continue;
+		}
+		isBlank = 1;
+	}
+	return (word_count);
+}
+/**
  * strtow - string to words
  * @str: input string
  *
@@ -7,36 +30,22 @@
  */
 char **strtow(char *str)
 {
-	int i, j, current = 0, word_size = 0;
-	int space_count = 0, str_size = 0, isBlank = 0;
+	int i, j, start, word_count, current = 0;
 	char **result;
-	char *start = str;
 
 	if (str == NULL || *str == '\0')
 		return (NULL);
-	while (str[str_size] != '\0')
-	{
-		if (str[str_size] == ' ' && isBlank == 0)
-		{
-			space_count++;
-			isBlank = 1;
-		}
-		else if (str[str_size] == ' ')
-		{
-			str_size++;
-			continue;
-		}
-		isBlank = 0;
-		str_size++;
-	}
-	result = malloc((space_count) * sizeof(char *));
+	word_count = count_word(str);
+	result = malloc((word_count + 1) * sizeof(char *));
 	if (result == NULL)
 		return (NULL);
 	for (i = 0; str[i] != '\0'; i++)
 	{
-		if (str[i] == ' ' && isBlank == 0)
+		if (str[i] != ' ')
 		{
-			result[current] = malloc((word_size + 1) * sizeof(char));
+			for (j = i; str[j] != ' '; j++)
+				;
+			result[current] = malloc((j - i + 1) * sizeof(char));
 			if (result[current] == NULL)
 			{
 				for (; current >= 0; current--)
@@ -44,23 +53,12 @@ char **strtow(char *str)
 				free(result);
 				return (NULL);
 			}
-			for (j = 0; j < word_size; j++)
-			{
-				result[current][j] = *(start + j);
-			}
-			result[current][j] = '\0';
-			start += j;
+			start = i;
+			for (; i < j; i++)
+				result[current][i - start] = str[i];
+			result[current][i - start] = '\0';
 			current++;
-			word_size = 0;
-			j = 0;
-			isBlank = 1;
 		}
-		else if (str[i] == ' ')
-		{
-			continue;
-		}
-		word_size++;
-		isBlank = 0;
 	}
 	result[current] = NULL;
 	return (result);
