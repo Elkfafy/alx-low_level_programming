@@ -159,6 +159,10 @@ int main(int argc, char **argv)
 		sign *= -1;
 		argv[2]++;
 	}
+	while (argv[1][0] == '0')
+		argv[1]++;
+	while (argv[2][0] == '0')
+		argv[2]++;
 	num1_size = get_num_size(argv[1]);
 	num2_size = get_num_size(argv[2]);
 	if (num1_size > num2_size)
