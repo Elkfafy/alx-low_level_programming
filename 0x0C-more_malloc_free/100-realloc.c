@@ -24,6 +24,8 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	target = result;
 	if (result == NULL)
 	{
+		free(ptr);
+		ptr = NULL;
 		return (NULL);
 	}
 	if (ptr == NULL)
@@ -33,6 +35,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	}
 	for (i = 0; i < old_size && i < new_size; i++)
 		target[i] = dest[i];
+	free(ptr);
 	ptr = result;
 	return (result);
 }
