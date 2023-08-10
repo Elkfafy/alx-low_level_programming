@@ -26,7 +26,7 @@ int get_num_size(char *str)
  *
  * Return: the reversed array
  */
-int *rev_int(int *arr, int size)
+char *rev_int(char *arr, int size)
 {
 	int temp;
 	int start = 0, last = size - 1;
@@ -68,7 +68,7 @@ char *rev_str(char *str, int size)
  * @num: input num buffer
  * @size: input string size
  */
-void print_num(int *num, int size)
+void print_num(char *num, int size)
 {
 	int i = 0;
 
@@ -85,7 +85,7 @@ void print_num(int *num, int size)
  *
  * Return: set each element to zero
  */
-int *set_int_arr(int *arr, int size)
+char *set_int_arr(char *arr, int size)
 {
 	int i;
 
@@ -102,7 +102,8 @@ int *set_int_arr(int *arr, int size)
  */
 int main(int argc, char **argv)
 {
-	int *mul_result, i, j;
+	char *mul_result;
+	int i, j;
 	int num1_size, num2_size;
 
 	if (argc != 3)
@@ -112,7 +113,7 @@ int main(int argc, char **argv)
 	}
 	num1_size = get_num_size(argv[1]);
 	num2_size = get_num_size(argv[2]);
-	mul_result = malloc((num1_size + num2_size) * sizeof(int));
+	mul_result = malloc((num1_size + num2_size) * sizeof(char));
 	if (mul_result == NULL)
 	{
 		printf("Error");
