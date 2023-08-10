@@ -141,23 +141,19 @@ char *mul(char *fnum, int flen, char *snum,
 int main(int argc, char **argv)
 {
 	char *mul_result, *temp_arr;
-	int sign = 1, temp;
-	int num1_size, num2_size;
+	int num1_size, num2_size, sign = 1, temp;
 
 	if (argc != 3)
 	{
-		printf("Error\n");
-		exit(98);
+		printf("Error\n"), exit(98);
 	}
 	if (argv[1][0] == '-')
 	{
-		sign *= -1;
-		argv[1]++;
+		sign *= -1, argv[1]++;
 	}
 	if (argv[2][0] == '-')
 	{
-		sign *= -1;
-		argv[2]++;
+		sign *= -1, argv[2]++;
 	}
 	while (argv[1][0] == '0')
 		argv[1]++;
