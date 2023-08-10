@@ -111,13 +111,23 @@ char *set_int_arr(char *arr, int size)
 int main(int argc, char **argv)
 {
 	char *mul_result;
-	int i, j;
+	int i, j, sign = 1;
 	int num1_size, num2_size;
 
 	if (argc != 3)
 	{
 		printf("Error\n");
 		exit(98);
+	}
+	if (argv[1][0] == '-')
+	{
+		sign *= -1;
+		argv[1]++;
+	}
+	if (argv[2][0] == '-')
+	{
+		sign *= -1;
+		argv[2]++;
 	}
 	num1_size = get_num_size(argv[1]);
 	num2_size = get_num_size(argv[2]);
@@ -140,6 +150,8 @@ int main(int argc, char **argv)
 		mul_result[i + 1] += j;
 	}
 	rev_int(mul_result, num1_size + num2_size);
+	if (sign == -1)
+		_putchar('-');
 	print_num(mul_result, num1_size + num2_size);
 	return (0);
 }
