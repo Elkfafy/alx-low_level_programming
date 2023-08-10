@@ -76,14 +76,15 @@ void print_num(char *num, int size)
 	{
 		if (i >= size)
 		{
-			printf("0\n");
+			_putchar('0');
+			_putchar('\n');
 			return;
 		}
 		i++;
 	}
 	for (; i < size; i++)
-		printf("%d", num[i]);
-	printf("\n");
+		_putchar(num[i] + '0');
+	_putchar('\n');
 }
 /**
  * set_int_arr - set elements of int arr to zero
@@ -115,7 +116,7 @@ int main(int argc, char **argv)
 
 	if (argc != 3)
 	{
-		printf("Error from argc\n");
+		printf("Error\n");
 		exit(98);
 	}
 	num1_size = get_num_size(argv[1]);
