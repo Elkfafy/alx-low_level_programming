@@ -134,9 +134,9 @@ int main(int argc, char **argv)
 			mul_result[i + j] += (argv[1][i] - '0') * (argv[2][j] - '0');
 	for (i = 0; i < num1_size + num2_size - 1; i++)
 	{
-		j = mul_result[i];
-		mul_result[i] = j % 10;
-		mul_result[i + 1] += j / 10;
+		j = mul_result[i] / 10;
+		mul_result[i] %= 10;
+		mul_result[i + 1] += j;
 	}
 	rev_int(mul_result, num1_size + num2_size);
 	print_num(mul_result, num1_size + num2_size);
