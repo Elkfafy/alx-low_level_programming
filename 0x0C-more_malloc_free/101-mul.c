@@ -73,7 +73,14 @@ void print_num(char *num, int size)
 	int i = 0;
 
 	while (num[i] == 0)
+	{
+		if (i >= size)
+		{
+			printf("0\n");
+			return;
+		}
 		i++;
+	}
 	for (; i < size; i++)
 		printf("%d", num[i]);
 	printf("\n");
