@@ -102,6 +102,36 @@ char *set_int_arr(char *arr, int size)
 	return (arr);
 }
 /**
+ * mul - mul function
+ * @fnum: input first number
+ * @flen: input first length
+ * @snum: input second number
+ * @slen: input second length
+ * @rnum: input result container
+ * @rlen: input result length
+ *
+ * Return: result pointer
+ */
+char *mul(char *fnum, int flen, char *snum,
+		int slen, char *rnum, int rlen)
+{
+	int i, j;
+
+	rev_str(fnum, flen);
+	rev_str(snum, slen);
+	for (i = 0; i < flen; i++)
+		for (j = 0; j < slen; j++)
+			rnum[i + j] += (fnum[i] - '0') * (snum[j] - '0');
+	for (i = 0; i < rlen - 1; i++)
+	{
+		j = rnum[i] / 10;
+		rnum[i] %= 10;
+		rnum[i + 1] += j;
+	}
+	rev_int(rnum, rlen);
+	return (rnum);
+}
+/**
  * main - mul function using large string numbers
  * @argc: argc
  * @argv: argv
@@ -110,8 +140,8 @@ char *set_int_arr(char *arr, int size)
  */
 int main(int argc, char **argv)
 {
-	char *mul_result;
-	int i, j, sign = 1;
+	char *mul_result, *temp_arr;
+	int sign = 1, temp;
 	int num1_size, num2_size;
 
 	if (argc != 3)
@@ -131,6 +161,12 @@ int main(int argc, char **argv)
 	}
 	num1_size = get_num_size(argv[1]);
 	num2_size = get_num_size(argv[2]);
+	if (num1_size > num2_size)
+	{
+		temp_arr = argv[1], argv[1] = argv[2];
+		argv[2] = temp_arr, temp = num1_size;
+		num1_size = num2_size, num2_size = temp;
+	}
 	mul_result = malloc((num1_size + num2_size) * sizeof(char));
 	if (mul_result == NULL)
 	{
@@ -138,18 +174,8 @@ int main(int argc, char **argv)
 		exit(98);
 	}
 	set_int_arr(mul_result, num1_size + num2_size);
-	rev_str(argv[1], num1_size);
-	rev_str(argv[2], num2_size);
-	for (i = 0; i < num1_size; i++)
-		for (j = 0; j < num2_size; j++)
-			mul_result[i + j] += (argv[1][i] - '0') * (argv[2][j] - '0');
-	for (i = 0; i < num1_size + num2_size - 1; i++)
-	{
-		j = mul_result[i] / 10;
-		mul_result[i] %= 10;
-		mul_result[i + 1] += j;
-	}
-	rev_int(mul_result, num1_size + num2_size);
+	mul(argv[1], num1_size, argv[2], num2_size,
+			mul_result, num1_size + num2_size);
 	if (sign == -1)
 		_putchar('-');
 	print_num(mul_result, num1_size + num2_size);
