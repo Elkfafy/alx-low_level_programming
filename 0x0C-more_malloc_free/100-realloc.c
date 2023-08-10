@@ -29,12 +29,10 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	}
 	if (ptr == NULL)
 	{
-		ptr = result;
 		return (result);
 	}
 	for (i = 0; i < old_size && i < new_size; i++)
 		target[i] = dest[i];
 	free(ptr);
-	ptr = result;
 	return (result);
 }
