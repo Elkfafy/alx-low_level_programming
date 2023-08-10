@@ -16,14 +16,24 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	if (old_size == new_size)
 		return (ptr);
 	if (new_size == 0)
+	{
+		free(ptr);
 		return (NULL);
+	}
 	result = malloc(new_size);
 	target = result;
 	if (result == NULL)
+	{
+		ptr = NULL;
 		return (NULL);
+	}
 	if (ptr == NULL)
+	{
+		ptr = result;
 		return (result);
+	}
 	for (i = 0; i < old_size && i < new_size; i++)
 		target[i] = dest[i];
+	ptr = result;
 	return (result);
 }
