@@ -18,6 +18,20 @@ int str_len(char *str)
 	return (size);
 }
 /**
+ * _atoi - atoi
+ * @str: input string
+ *
+ * Return: number
+ */
+int _atoi(char *str)
+{
+	int i, num = 0;
+
+	for (i = 0; str[i] != '\0'; i++)
+		num = num * 10 + (str[i] - '0');
+	return (num);
+}
+/**
  * main - mul function
  * @argc: input argc
  * @argv: input argv
@@ -44,7 +58,7 @@ int main(int argc, char **argv)
 	}
 	str_len(argv[1]);
 	str_len(argv[2]);
-	result = atoi(argv[1]) * atoi(argv[2]);
+	result = _atoi(argv[1]) * _atoi(argv[2]);
 	if (sign == -1)
 		printf("-");
 	printf("%d\n", result);
