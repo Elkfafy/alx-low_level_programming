@@ -82,6 +82,12 @@ void print_num(int *num, int size)
 		}
 		i++;
 	}
+	if (i >= size)
+	{
+		_putchar('0');
+		_putchar('\n');
+		return;
+	}
 	for (; i < size; i++)
 		_putchar(num[i] + '0');
 	_putchar('\n');
