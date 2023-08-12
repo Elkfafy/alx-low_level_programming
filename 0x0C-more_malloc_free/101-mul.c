@@ -7,7 +7,7 @@
  */
 int get_num_size(char *str)
 {
-	int count;
+	int count, zero_flag = 1;
 
 	for (count = 0; str[count] != '\0'; count++)
 	{
@@ -16,6 +16,13 @@ int get_num_size(char *str)
 			printf("Error\n");
 			exit(98);
 		}
+		if (str[count] != '0')
+			zero_flag = 0;
+	}
+	if (zero_flag)
+	{
+		printf("0\n");
+		exit(0);
 	}
 	return (count);
 }
