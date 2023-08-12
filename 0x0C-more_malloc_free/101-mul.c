@@ -182,5 +182,6 @@ int main(int argc, char **argv)
 	if (sign == -1)
 		_putchar('-');
 	print_num(mul_result, num1_size + num2_size);
+	free(mul_result);
 	return (0);
 }
