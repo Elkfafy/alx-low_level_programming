@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 		exit(2);
 	}
 	for (i = 0; i < atoi(argv[1]); i++)
-		printf("0x%02x ", cont[i] & 0xFF);
+		printf("%02x ", cont[i] & 0xFF);
 	printf("\n");
 	return (0);
 }
