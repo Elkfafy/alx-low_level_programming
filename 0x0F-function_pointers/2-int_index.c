@@ -3,7 +3,7 @@
  * int_index - index of the match
  * @array: input array
  * @size: input size of the array
- * @cmp; compare function
+ * @cmp: compare function
  *
  * Return: index of first match
  */
