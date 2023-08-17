@@ -3,18 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
-/**
- * struct key - structure for key
- * @c: c
- * @func: function
- * Description: just a holder for a char - function
- * opt_t - key to function type
- */
-typedef struct key
-{
-	char c;
-	void (*func)(va_list);
-} opt_t;
 int sum_them_all(const unsigned int n, ...);
 void print_numbers(const char *separator, const unsigned int n, ...);
 void print_strings(const char *separator, const unsigned int n, ...);
