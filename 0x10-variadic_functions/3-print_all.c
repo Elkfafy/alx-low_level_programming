@@ -29,7 +29,7 @@ void print_form(char c, va_list *args)
 }
 /**
  * print_all - print all depending on format string
- * format: input format string
+ * @format: input format string
  */
 void print_all(const char * const format, ...)
 {
