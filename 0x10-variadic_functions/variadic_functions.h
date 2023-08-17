@@ -4,6 +4,10 @@
 #include <stdlib.h>
 #include <stdarg.h>
 /**
+ * struct key - structure for key
+ * @c: c
+ * @func: function
+ * Description: just a holder for a char - function
  * opt_t - key to function type
  */
 typedef struct key
