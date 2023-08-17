@@ -1,13 +1,5 @@
 #include "variadic_functions.h"
 /**
- * opt_t - key to function type
- */
-typedef struct key
-{
-	char c;
-	void (*func)(va_list);
-} opt_t;
-/**
  * print_char - print character
  * @list: input list
  */
@@ -38,7 +30,7 @@ void print_float(va_list list)
 void print_str(va_list list)
 {
 	char *cont = va_arg(list, char *);
-	
+
 	if (cont == NULL)
 		cont = "(nil)";
 	printf("%s", cont);
@@ -79,4 +71,3 @@ void print_all(const char * const format, ...)
 	printf("\n");
 	va_end(args);
 }
-
