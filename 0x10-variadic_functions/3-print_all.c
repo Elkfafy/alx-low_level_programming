@@ -1,63 +1,82 @@
 #include "variadic_functions.h"
 /**
- * print_form - print depending on the format
- * @c: input format character
- * @args: input va list
+ * opt_t - key to function type
  */
-void print_form(char c, va_list *args)
+typedef struct key
 {
-	char *cont;
-
-	switch (c)
-	{
-		case 'c':
-			printf("%c", va_arg(*args, int));
-			break;
-		case 'i':
-			printf("%d", va_arg(*args, int));
-			break;
-		case 'f':
-			printf("%f", (float) va_arg(*args, double));
-			break;
-		case 's':
-			cont = va_arg(*args, char *);
-			if (cont == NULL)
-				cont = "(nil)";
-			printf("%s", cont);
-			break;
-	}
+	char c;
+	void (*func)(va_list);
+} opt_t;
+/**
+ * print_char - print character
+ * @list: input list
+ */
+void print_char(va_list list)
+{
+	printf("%c", va_arg(list, int));
 }
 /**
- * print_all - print all depending on format string
+ * print_int - print integer
+ * @list: input list
+ */
+void print_int(va_list list)
+{
+	printf("%d", va_arg(list, int));
+}
+/**
+ * print_float - print float
+ * @list: input list
+ */
+void print_float(va_list list)
+{
+	printf("%f", va_arg(list, double));
+}
+/**
+ * print_str - print string
+ * @list: input list
+ */
+void print_str(va_list list)
+{
+	char *cont = va_arg(list, char *);
+	
+	if (cont == NULL)
+		cont = "(nil)";
+	printf("%s", cont);
+}
+/**
+ * print_all - print all args
  * @format: input format string
  */
 void print_all(const char * const format, ...)
 {
 	va_list args;
-	unsigned int i = 0;
+	unsigned int isfirst = 0, i = 0, j;
+	opt_t opts[] = {
+		{'c', print_char},
+		{'i', print_int},
+		{'f', print_float},
+		{'s', print_str}
+	};
 
-	if (format == NULL || format[0] == '\0')
-	{
-		printf("\n");
-		return;
-	}
 	va_start(args, format);
-	print_form(format[i], &args);
-	i++;
-	while (format[i] != '\0')
+	while (format && format[i] != '\0')
 	{
-		switch (format[i])
+		j = 0;
+		while (j < 4)
 		{
-			case 'c':
-			case 'i':
-			case 'f':
-			case 's':
-				printf(", ");
+			if (opts[j].c == format[i])
+			{
+				if (isfirst)
+					printf(", ");
+				opts[j].func(args);
+				isfirst = 1;
 				break;
+			}
+			j++;
 		}
-		print_form(format[i], &args);
 		i++;
 	}
 	printf("\n");
 	va_end(args);
 }
+
