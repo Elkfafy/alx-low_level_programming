@@ -17,7 +17,7 @@ void print_form(char c, va_list *args)
 			printf("%d", va_arg(*args, int));
 			break;
 		case 'f':
-			printf("%f", va_arg(*args, double));
+			printf("%f", (float) va_arg(*args, double));
 			break;
 		case 's':
 			cont = va_arg(*args, char *);
@@ -35,7 +35,6 @@ void print_all(const char * const format, ...)
 {
 	va_list args;
 	unsigned int i = 0;
-	char *seperator = ", ";
 
 	if (format == NULL || format[0] == '\0')
 	{
@@ -53,7 +52,7 @@ void print_all(const char * const format, ...)
 			case 'i':
 			case 'f':
 			case 's':
-				printf("%s", seperator);
+				printf(", ");
 				break;
 		}
 		print_form(format[i], &args);

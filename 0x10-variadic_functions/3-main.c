@@ -7,6 +7,6 @@
  *     */
 int main(void)
 {
-	    print_all("", 'B', 3, "stSchool");
+	    print_all("ceisf", 'B', 3, "ahmed", 3.3);
 	        return (0);
 }
