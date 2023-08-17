@@ -41,8 +41,9 @@ void print_str(va_list list)
  */
 void print_all(const char * const format, ...)
 {
+	char *sep1 = "", *sep2 = ", ";
 	va_list args;
-	unsigned int isfirst = 0, i = 0, j;
+	unsigned int i = 0, j;
 	opt_t opts[] = {
 		{'c', print_char},
 		{'i', print_int},
@@ -58,10 +59,9 @@ void print_all(const char * const format, ...)
 		{
 			if (opts[j].c == format[i])
 			{
-				if (isfirst)
-					printf(", ");
+				printf("%s", sep1);
 				opts[j].func(args);
-				isfirst = 1;
+				sep1 = sep2;
 				break;
 			}
 			j++;
