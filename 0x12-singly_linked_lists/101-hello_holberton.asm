@@ -8,6 +8,6 @@ call printf
 ret
 
 formtatStr:
-	db `%s\n`, 0
+	db `%s\n`,0
 Str:
-	db "Hello, Holberton", 10, 0
+	db "Hello, Holberton",10,0
