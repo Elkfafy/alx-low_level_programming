@@ -1,6 +1,6 @@
 mov rdi, formtStr
 mov rsi, 5
-mov al, 
+mov al, 0
 
 extern printf
 call printf
