@@ -1,5 +1,5 @@
 mov rdi, formtStr
-mov rsi, 5
+mov rsi, Str
 mov al, 0
 
 extern printf
@@ -8,4 +8,6 @@ call printf
 ret
 
 formtatStr:
-	db `Hello, Holberton\n`, 0
+	db `%s\n`, 0
+Str:
+	db "Hello, Holberton", 10, 0
