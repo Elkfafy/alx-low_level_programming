@@ -8,12 +8,12 @@
  */
 unsigned int str_len(char *str)
 {
-	unsigned int len;
+	unsigned int len = 0;
 
-	for (len = 0; str[len] != '\0'; len++)
-	       ;
+	while (str[len] != '\0')
+		len++;
 	return (len);
-}	
+}
 /**
  * add_node - add a node
  * @head: input head
