@@ -16,6 +16,8 @@ void free_listint_helper(listint_t *head)
  */
 void free_listint2(listint_t **head)
 {
+	if (head == NULL)
+		return;
 	free_listint_helper(*head);
 	*head = NULL;
 	head = NULL;
