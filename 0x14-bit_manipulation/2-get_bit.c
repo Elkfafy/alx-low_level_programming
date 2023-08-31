@@ -20,5 +20,7 @@ unsigned long int pow_t(unsigned long int i)
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
+	if (index > (8 * 8))
+		return (-1);
 	return ((n & pow_t(index)) == pow_t(index));
 }
