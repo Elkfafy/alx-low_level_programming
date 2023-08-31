@@ -23,6 +23,8 @@ unsigned int binary_to_uint(const char *b)
 {
 	unsigned int i, num = 0, str_len;
 
+	if (b == NULL)
+		return (0);
 	for (str_len = 0; b[str_len] != '\0'; str_len++)
 		;
 	for (i = 0; i < str_len; i++)
