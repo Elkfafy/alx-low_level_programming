@@ -4,7 +4,7 @@
  * @n: input number
  * @index: input index
  *
- * Return; success
+ * Return: success
  */
 int clear_bit(unsigned long int *n, unsigned int index)
 {
