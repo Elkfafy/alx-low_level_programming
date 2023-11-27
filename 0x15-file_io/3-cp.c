@@ -1,5 +1,8 @@
-#include "holberton.h"
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
 #include <stdio.h>
+#define BUFSIZE 1024
 /**
  *   * main - entry point
  *     * @ac: argument count
