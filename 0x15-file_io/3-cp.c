@@ -52,25 +52,28 @@ int main(int ac, char **av)
 		exit(97);
 	}
 	fd_from = open(av[1], O_RDONLY);
-	if (fd_from < 0)
+	if (fd_from == -1)
 		r_error(av[1]);
 	fd_to = open(av[2], to_flags, to_mode);
-	if (fd_to < 0)
+	if (fd_to == -1)
 		w_error(av[2]);
 	while (state)
 	{
 		state = read(fd_from, buffer, BUFFER_SIZE);
-		if (state < 0)
+		if (state == -1)
 			r_error(av[1]);
-		wr_state = write(fd_to, buffer, state);
-		if (wr_state != state || wr_state < 0)
-			w_error(av[2]);
+		if (state > 0)
+		{
+			wr_state = write(fd_to, buffer, state);
+			if (wr_state != state || wr_state < 0)
+				w_error(av[2]);
+		}
 	}
 	state = close(fd_from);
-	if (state < 0)
+	if (state == -1)
 		c_error(fd_from);
 	state = close(fd_to);
-	if (state < 0)
+	if (state == -1)
 		c_error(fd_to);
 	return (0);
 }
