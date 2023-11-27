@@ -59,7 +59,7 @@ int main(int ac, char **av)
 	fd_to = open(av[2], to_flags, to_mode);
 	if (fd_to < 0)
 		w_error(av[2]);
-	while (state != 0)
+	while (state)
 	{
 		state = read(fd_from, buffer, BUFFER_SIZE);
 		if (state < 0)
