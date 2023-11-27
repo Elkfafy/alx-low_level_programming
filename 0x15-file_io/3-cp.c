@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <sys/stat.h>
 #define BUFFER_SIZE 1024
 /**
  * r_error - read error
@@ -46,6 +47,7 @@ int main(int ac, char **av)
 	mode_t to_mode_oth = S_IROTH;
 	mode_t to_mode = to_mode_grp | to_mode_usr | to_mode_oth;
 
+	umask(0);
 	if (ac != 3)
 	{
 		dprintf(2, "Usage: cp file_from file_to\n");
