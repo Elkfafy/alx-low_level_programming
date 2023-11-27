@@ -39,7 +39,7 @@ void c_error(int fd)
  */
 int main(int ac, char **av)
 {
-	int fd_from, fd_to, state = 1;
+	int fd_from, fd_to, state = 1, wr_state;
 	int to_flags = O_WRONLY | O_CREAT | O_TRUNC;
 	char buffer[BUFFER_SIZE] = " ";
 	mode_t to_mode_grp = S_IWGRP | S_IRGRP;
@@ -64,8 +64,8 @@ int main(int ac, char **av)
 		state = read(fd_from, buffer, BUFFER_SIZE);
 		if (state < 0)
 			r_error(av[1]);
-		state = write(fd_to, buffer, state);
-		if (state < 0)
+		wr_state = write(fd_to, buffer, state);
+		if (wr_state != state || wr_state < 0)
 			w_error(av[2]);
 	}
 	state = close(fd_from);
