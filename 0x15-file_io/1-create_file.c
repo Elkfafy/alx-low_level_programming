@@ -14,6 +14,12 @@ int create_file(const char *filename, char *text_content)
 	fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
 	if (fd < 0)
 		return (-1);
+	if (text_content == NULL)
+	{
+		res = write(fd, "", 0);
+		close(fd);
+		return (1);
+	}
 	for (text_size = 0; text_content[text_size] != '\0'; text_size++)
 		;
 	res = write(fd, text_content, text_size);
