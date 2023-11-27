@@ -9,7 +9,7 @@
  */
 void r_error(char *filename)
 {
-	dprintf(2, "Error: Can't read from file %s\n", filename);
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
 	exit(98);
 }
 /**
@@ -18,7 +18,7 @@ void r_error(char *filename)
  */
 void w_error(char *filename)
 {
-	dprintf(2, "Error: Can't write to %s\n", filename);
+	dprintf(STDERR_FIENO, "Error: Can't write to %s\n", filename);
 	exit(99);
 }
 /**
@@ -27,7 +27,7 @@ void w_error(char *filename)
  */
 void c_error(int fd)
 {
-	dprintf(2, "Error: Can't close fd %d\n", fd);
+	dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 	exit(100);
 }
 /**
@@ -39,7 +39,7 @@ void c_error(int fd)
 int main(int ac, char **av)
 {
 	int fd_from, fd_to, state = 1, wr_state;
-	int to_flags = O_WRONLY | O_CREAT | O_TRUNC;
+	int to_flags = O_CREAT | O_WRONLY | O_TRUNC;
 	char buffer[BUFFER_SIZE];
 	mode_t to_mode_grp = S_IWGRP | S_IRGRP;
 	mode_t to_mode_usr = S_IRUSR | S_IWUSR;
@@ -48,7 +48,7 @@ int main(int ac, char **av)
 
 	if (ac != 3)
 	{
-		dprintf(2, "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 	fd_from = open(av[1], O_RDONLY);
@@ -65,7 +65,7 @@ int main(int ac, char **av)
 		if (state > 0)
 		{
 			wr_state = write(fd_to, buffer, state);
-			if (wr_state != state || wr_state < 0)
+			if (wr_state != state || wr_state == -1)
 				w_error(av[2]);
 		}
 	}
