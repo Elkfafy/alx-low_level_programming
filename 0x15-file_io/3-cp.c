@@ -18,7 +18,7 @@ void r_error(char *filename)
  */
 void w_error(char *filename)
 {
-	dprintf(STDERR_FIENO, "Error: Can't write to %s\n", filename);
+	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
 	exit(99);
 }
 /**
