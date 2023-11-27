@@ -40,7 +40,7 @@ int main(int ac, char **av)
 {
 	int fd_from, fd_to, state = 1, wr_state;
 	int to_flags = O_WRONLY | O_CREAT | O_TRUNC;
-	char buffer[BUFFER_SIZE] = " ";
+	char buffer[BUFFER_SIZE];
 	mode_t to_mode_grp = S_IWGRP | S_IRGRP;
 	mode_t to_mode_usr = S_IRUSR | S_IWUSR;
 	mode_t to_mode_oth = S_IROTH;
