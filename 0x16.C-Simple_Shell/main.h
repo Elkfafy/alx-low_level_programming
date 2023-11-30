@@ -5,6 +5,8 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <string.h>
+#include <sys/wait.h>
+#include <sys/types.h>
 #define LINESIZE 1024
 int ar_puts(const char *);
 int _putchar(char);
@@ -17,4 +19,5 @@ int ar_strcmp(const char *, const char *);
 void ar_execute(char **);
 char *ar_strcat(char *, const char *);
 size_t ar_strlen(const char *str);
+int ar_execve(const char *, char *const[], char *const[]);
 #endif
