@@ -1,11 +1,15 @@
 #ifndef MAIN_H
 #define MAIN_H
+#define LINE_SIZE 1024
 #define EXIT_CODE 3040
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <sys/types.h>
+#include <fcntl.h>
 #include <sys/stat.h>
 #define UNUSED __attribute__((__unused__))
 /**
@@ -15,6 +19,7 @@ typedef struct op {
 	char *name;
 	int (*op)(char **);
 } op_t;
+int ar_getline(char *, int);
 int ar_putchar(char);
 int ar_puts(char *);
 int ar_strcmp(const char *, const char *);

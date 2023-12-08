@@ -3,7 +3,7 @@
 /**
  * ar_getpath - get path from operation
  * @op: input operation
- * Retrn: pathname
+ * Return: pathname
  */
 char *ar_getpath(const char *op)
 {
