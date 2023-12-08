@@ -4,11 +4,12 @@
  * @av: input av
  * Return: status
  */
-int ar_env(char ** av UNUSED)
+int ar_env(char **av)
 {
-	extern char **environ;
 	int i;
 
+	if (av[1] == NULL)
+		i = 0;
 	for (i = 0; environ[i] != NULL; i++)
 	{
 		ar_puts(environ[i]);

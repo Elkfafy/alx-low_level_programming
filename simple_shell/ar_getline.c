@@ -8,7 +8,8 @@
 int ar_getline(char *line, int fd)
 {
 	int sum = 0, current, i;
-	if (fd > 1)
+
+	if (fd > 1 || !isatty(fileno(stdin)))
 	{
 	for (i = 0; i < LINE_SIZE; i++)
 	{

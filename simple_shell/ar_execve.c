@@ -15,9 +15,8 @@ int ar_execve(const char *pathname, char *const argv[], char *const envp[])
 	if (pid == 0)
 	{
 		execve(pathname, argv, envp);
-		perror("execution error");
 		exit(EXIT_FAILURE);
-	} 
+	}
 	else if (pid > 0)
 	{
 		if (wait(&status) == -1)
@@ -29,7 +28,7 @@ int ar_execve(const char *pathname, char *const argv[], char *const envp[])
 		{
 			exit_status = WEXITSTATUS(status);
 			if (exit_status == EXIT_FAILURE)
-					return (-1);
+				return (-1);
 		}
 	}
 	else

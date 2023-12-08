@@ -27,7 +27,6 @@ int ar_execute(char **av)
 		{NULL, NULL}
 	};
 	int i;
-	extern char **environ;
 
 	if (av == NULL)
 		return (-1);
@@ -53,9 +52,10 @@ int ar_execvp(char **av)
 {
 	char *filename;
 	int state;
-	extern char **environ;
 
 	filename = ar_getpath(av[0]);
+	if (filename == NULL)
+		return (-1);
 	state = ar_execve(filename, av, environ);
 	free(filename);
 	return (state);

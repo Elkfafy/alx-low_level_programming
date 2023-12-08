@@ -11,14 +11,26 @@
 #include <sys/types.h>
 #include <fcntl.h>
 #include <sys/stat.h>
-#define UNUSED __attribute__((__unused__))
+extern char **environ;
+/**
+ * struct op - operation structure
+ * @name: operation name
+ * @op: operation method
+ * LONGER DISCRIPTION
+ */
+struct op
+{
+	char *name;
+	int (*op)(char **);
+};
 /**
  * op_t - operation type
  */
-typedef struct op {
-	char *name;
-	int (*op)(char **);
-} op_t;
+typedef struct op op_t;
+int ar_atoi(const char *);
+int ar_putcerr(char);
+int ar_putserr(const char *);
+int ar_putn(int);
 int ar_getline(char *, int);
 int ar_putchar(char);
 int ar_puts(char *);
