@@ -13,8 +13,9 @@ int main(void)
 	    hash_table_t *ht;
 
 	        ht = hash_table_create(1);
-		    hash_table_set(ht, "betty", "cool");
+		    hash_table_set(ht, "second betty", "cool");
 		    hash_table_set(ht, "second", "ahmed");
+		    hash_table_set(ht, "second", "eslam");
 		    printf("%s, %s\n", ht->array[0]->key, ht->array[0]->value);
 		    printf("%s, %s\n", ht->array[0]->next->key, ht->array[0]->next->value);
 		        return (EXIT_SUCCESS);
