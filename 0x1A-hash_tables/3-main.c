@@ -10,16 +10,24 @@
  *     */
 int main(void)
 {
+	hash_node_t *current;
 	    hash_table_t *ht;
 
 	        ht = hash_table_create(1);
 		    hash_table_set(ht, "second betty", "cool");
+		    hash_table_set(ht, "third", "soma");
 		    hash_table_set(ht, "second", "ahmed");
 		    hash_table_set(ht, "second betty", "sheks");
 		    hash_table_set(ht, "second", "eslam");
+
+		    hash_table_set(ht, "third", "2ho");
 		    
-		    printf("%s, %s\n", ht->array[0]->key, ht->array[0]->value);
-		    printf("%s, %s\n", ht->array[0]->next->key, ht->array[0]->next->value);
+		    current = ht->array[0];
+		    while (current != NULL)
+		    {
+		    	printf("%s, %s\n", current->key, current->value);
+		    	current = current->next;
+		}
 		    printf("%p, %s\n", (void *) ht->array[0]->next->next, ht->array[0]->next->value);
 		        return (EXIT_SUCCESS);
 }
