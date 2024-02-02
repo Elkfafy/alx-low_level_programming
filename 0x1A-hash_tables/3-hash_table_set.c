@@ -40,16 +40,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		current->next = ht->array[index];
 		ht->array[index] = current;
 	}
-	else if (strcmp(temp->key, my_key) == 0)
+	else
 	{
 		temp->value = my_value;
 		free(current->key);
 		free(current);
-	}
-	else
-	{
-		current->next = ht->array[index];
-		ht->array[index] = current;
 	}
 	return (1);
 }
